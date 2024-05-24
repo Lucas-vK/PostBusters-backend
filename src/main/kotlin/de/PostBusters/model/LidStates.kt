@@ -6,19 +6,20 @@ import org.ktorm.entity.sequenceOf
 import org.ktorm.schema.Table
 import org.ktorm.schema.*
 import java.time.LocalDate
+import java.time.LocalDateTime
 
-object LidStates : Table<LidState>("t_lid_state") {
+object LidStates : Table<LidState>("t_lid_states") {
     val id = int("id").primaryKey().bindTo { it.id }
-    val postboxId = int("postbox_id").references(PostBoxes) { it.postbox }
-    val timestamp = date("timestamp")
-    val isOpen = boolean("is_open")
+    val postboxId = int("postbox_id").bindTo { it.postbox }
+    val timestamp = datetime("timestamp").bindTo { it.timestamp }
+    val isOpen = boolean("is_open").bindTo { it.isOpen }
 }
 
 interface LidState : Entity<LidState> {
     val id : Int
-    val postbox : PostBox
-    val timestamp : LocalDate
-    val isOpen : Boolean
+    var postbox : Int
+    var timestamp : LocalDateTime
+    var isOpen : Boolean
 }
 
-val Database.lidState get() = this.sequenceOf(LidStates)
+val Database.lidStates get() = this.sequenceOf(LidStates)
