@@ -23,6 +23,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.ktorm:ktorm-core:4.0.0")
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-sessions-jvm")
     implementation("io.ktor:ktor-server-auth-jvm")
