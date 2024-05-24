@@ -16,9 +16,9 @@ object BatteryStates : Table<BatteryState>("t_battery_state") {
 
 interface BatteryState : Entity<BatteryState> {
     val id: Int
-    val postbox: PostBox
-    val timestamp: LocalDate
-    val charge: Int
+    var postbox: PostBox
+    var timestamp: LocalDate
+    var charge: Int
 }
 
-val Database.batteryState get() = this.sequenceOf(BatteryStates)
+val Database.batteryStates get() = this.sequenceOf(BatteryStates)

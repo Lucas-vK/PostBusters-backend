@@ -6,18 +6,18 @@ import org.ktorm.entity.sequenceOf
 import org.ktorm.schema.Table
 import org.ktorm.schema.*
 
-object PostBoxes : Table<PostBox>("t_users") {
+object PostBoxes : Table<PostBox>("t_postboxes") {
     val id = int("id").primaryKey().bindTo { it.id }
-    val name = text("login").bindTo { it.name }
-    val address = text("email").bindTo { it.address }
-    val notes = text("name").bindTo { it.notes }
+    val name = text("name").bindTo { it.name }
+    val address = text("address").bindTo { it.address }
+    val notes = text("notes").bindTo { it.notes }
 }
 
 interface PostBox : Entity<PostBox> {
-    val id : Int
-    val name : String
-    val address : String
-    val notes : String
+    val id : Int?
+    var name : String
+    var address : String
+    var notes : String
 }
 
-val Database.postBox get() = this.sequenceOf(PostBoxes)
+val Database.postBoxes get() = this.sequenceOf(PostBoxes)

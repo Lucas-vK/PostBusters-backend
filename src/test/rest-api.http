@@ -1,0 +1,67 @@
+### login
+POST http://localhost:8080/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "login": "test3",
+  "password": "test"
+}
+
+### create new user
+POST http://localhost:8080/create-user
+Accept: application/json
+Content-Type: application/json
+
+{
+  "login": "test4",
+  "password":  "test",
+  "email": "test",
+  "name":  "test",
+  "surname": "test"
+}
+
+### get postboxes of logged in user
+GET http://localhost:8080/postboxes
+Accept: application/json
+
+
+### create new postbox for logged in user
+POST http://localhost:8080/put/PostBoxes
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "test",
+  "address":  "test",
+  "notes": "test"
+}
+<> 2024-05-24T225553.200.json
+<> 2024-05-24T225234.200.json
+<> 2024-05-24T224346.200.json
+<> 2024-05-24T220921.200.json
+<> 2024-05-24T214822.200.json
+<> 2024-05-24T213145.200.json
+<> 2024-05-24T205408.200.json
+<> 2024-05-24T205140.200.json
+<> 2024-05-24T204844.200.json
+<> 2024-05-24T204338.200.txt
+<> 2024-05-24T204122.200.txt
+<> 2024-05-24T203902.200.txt
+<> 2024-05-24T203722.200.json
+<> 2024-05-24T203620.200.json
+<> 2024-05-24T203532.200.json
+<> 2024-05-24T203511.200.json
+<> 2024-05-24T203013.200.json
+<> 2024-05-24T203004.200.json
+<> 2024-05-24T202951.200.json
+<> 2024-05-24T202943.200.json
+<> 2024-05-24T202839.200.json
+<> 2024-05-24T202820.200.json
+<> 2024-05-24T202039.200.json
+<> 2024-05-24T202034.200.json
+<> 2024-05-24T202020.200.json
+<> 2024-05-24T193522.200.json
+<> 2024-05-24T193505.200.json
+
+###

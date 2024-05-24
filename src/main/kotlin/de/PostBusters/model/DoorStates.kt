@@ -16,9 +16,9 @@ object DoorStates : Table<DoorState>("t_door_state") {
 
 interface DoorState : Entity<DoorState> {
     val id : Int
-    val postbox : PostBox
-    val timestamp : LocalDate
-    val isOpen : Boolean
+    var postbox : PostBox
+    var timestamp : LocalDate
+    var isOpen : Boolean
 }
 
-val Database.doorState get() = this.sequenceOf(DoorStates)
+val Database.doorStates get() = this.sequenceOf(DoorStates)

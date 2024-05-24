@@ -20,7 +20,7 @@ create table t_users_postboxes
 (
     user_id         INT NOT NULL
         constraint fk_user_id_postbox
-            references t_postboxes (id),
+            references t_users (id),
     postbox_id      INT
         CONSTRAINT fk_postbox_id_postbox
             REFERENCES t_postboxes(id),

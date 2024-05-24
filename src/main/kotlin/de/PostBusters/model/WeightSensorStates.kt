@@ -8,18 +8,18 @@ import org.ktorm.schema.*
 import java.math.BigDecimal
 import java.time.LocalDate
 
-object WeightSensorState : Table<IWeightSensorState>("t_weight_sensor_state") {
+object WeightSensorStates : Table<WeightSensorState>("t_weight_sensor_state") {
     val id = int("id").primaryKey().bindTo { it.id }
     val postboxId = int("postbox_id").references(PostBoxes) { it.postbox }
     val timestamp = date("timestamp").bindTo { it.timestamp }
     val weight = decimal("is_open").bindTo { it.weight }
 }
 
-interface IWeightSensorState : Entity<IWeightSensorState> {
+interface WeightSensorState : Entity<WeightSensorState> {
     val id: Int
-    val postbox: PostBox
-    val timestamp: LocalDate
-    val weight: BigDecimal
+    var postbox: PostBox
+    var timestamp: LocalDate
+    var weight: BigDecimal
 }
 
-val Database.weightSensorState get() = this.sequenceOf(WeightSensorState)
+val Database.weightSensorStates get() = this.sequenceOf(WeightSensorStates)
