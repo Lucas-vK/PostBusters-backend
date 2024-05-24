@@ -18,6 +18,10 @@ interface PostBox : Entity<PostBox> {
     var name : String
     var address : String
     var notes : String
+    var BatteryStates: List<BatteryState>
+    var DoorState: List<DoorState>
+    var LidState: List<LidState>
+    var WeightSensorState: List<WeightSensorState>
 }
 
 val Database.postBoxes get() = this.sequenceOf(PostBoxes)

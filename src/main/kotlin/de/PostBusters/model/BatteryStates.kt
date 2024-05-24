@@ -5,19 +5,19 @@ import org.ktorm.entity.Entity
 import org.ktorm.entity.sequenceOf
 import org.ktorm.schema.Table
 import org.ktorm.schema.*
-import java.time.LocalDate
+import java.time.LocalDateTime
 
 object BatteryStates : Table<BatteryState>("t_battery_state") {
     val id = int("id").primaryKey().bindTo { it.id }
     val postboxId = int("department_id").references(PostBoxes) { it.postbox }
-    val timestamp = date("timestamp").bindTo { it.timestamp }
+    val timestamp = datetime("timestamp").bindTo { it.timestamp }
     val charge = int("charge").bindTo { it.charge }
 }
 
 interface BatteryState : Entity<BatteryState> {
     val id: Int
     var postbox: PostBox
-    var timestamp: LocalDate
+    var timestamp: LocalDateTime
     var charge: Int
 }
 
