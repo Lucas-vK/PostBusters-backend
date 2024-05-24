@@ -2,6 +2,7 @@ create table t_users
 (
     id          SERIAL NOT NULL PRIMARY KEY,
     login       TEXT    NOT NULL,
+    password    TEXT    NOT NULL,
     email       TEXT    NOT NULL,
     name        TEXT    NOT NULL,
     surname     TEXT    NOT NULL

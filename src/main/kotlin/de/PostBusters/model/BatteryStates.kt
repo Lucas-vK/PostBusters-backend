@@ -5,21 +5,20 @@ import org.ktorm.entity.Entity
 import org.ktorm.entity.sequenceOf
 import org.ktorm.schema.Table
 import org.ktorm.schema.*
-import java.math.BigDecimal
 import java.time.LocalDate
 
-object WeightSensorState : Table<IWeightSensorState>("t_weight_sensor_state") {
+object BatteryStates : Table<BatteryState>("t_battery_state") {
     val id = int("id").primaryKey().bindTo { it.id }
-    val postboxId = int("postbox_id").references(PostBoxes) { it.postbox }
+    val postboxId = int("department_id").references(PostBoxes) { it.postbox }
     val timestamp = date("timestamp").bindTo { it.timestamp }
-    val weight = decimal("is_open").bindTo { it.weight }
+    val charge = int("charge").bindTo { it.charge }
 }
 
-interface IWeightSensorState : Entity<IWeightSensorState> {
+interface BatteryState : Entity<BatteryState> {
     val id: Int
     val postbox: PostBox
     val timestamp: LocalDate
-    val weight: BigDecimal
+    val charge: Int
 }
 
-val Database.weightSensorState get() = this.sequenceOf(WeightSensorState)
+val Database.batteryState get() = this.sequenceOf(BatteryStates)
