@@ -22,12 +22,17 @@ Content-Type: application/json
 }
 
 ### get postboxes of logged in user
-GET http://localhost:8080/postboxes
+POST http://localhost:8080/PostBoxes
 Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "test3"
+}
 
 
-### create new postbox for logged in user
-POST http://localhost:8080/put/PostBoxes
+### create new postbox for user with given id
+POST http://localhost:8080/put/PostBoxes/5
 Accept: application/json
 Content-Type: application/json
 
@@ -43,7 +48,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "postboxId": 1,
+  "postboxId": 3,
   "timestamp": [2024,5,25,2,7,52,942372300],
   "isOpen": true
 }

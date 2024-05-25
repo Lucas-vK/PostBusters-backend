@@ -1,13 +1,13 @@
 package de.PostBusters.model
 
-import de.PostBusters.model.LidStates.bindTo
 import org.ktorm.database.Database
 import org.ktorm.entity.Entity
 import org.ktorm.entity.sequenceOf
 import org.ktorm.schema.Table
-import org.ktorm.schema.*
+import org.ktorm.schema.datetime
+import org.ktorm.schema.decimal
+import org.ktorm.schema.int
 import java.math.BigDecimal
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 object WeightSensorStates : Table<WeightSensorState>("t_weight_sensor_states") {

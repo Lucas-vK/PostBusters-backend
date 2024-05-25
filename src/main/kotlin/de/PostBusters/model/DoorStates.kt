@@ -1,5 +1,6 @@
 package de.PostBusters.model
 
+import de.PostBusters.model.BatteryStates.bindTo
 import org.ktorm.database.Database
 import org.ktorm.entity.Entity
 import org.ktorm.entity.sequenceOf
@@ -16,7 +17,7 @@ object DoorStates : Table<DoorState>("t_door_states") {
 
 interface DoorState : Entity<DoorState> {
     val id : Int
-    var postboxId: Int
+    var postboxId : Int
     var timestamp : LocalDateTime
     var isOpen : Boolean
 }

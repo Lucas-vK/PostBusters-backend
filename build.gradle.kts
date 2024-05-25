@@ -25,6 +25,7 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0-RC")
     implementation("org.ktorm:ktorm-core:4.0.0")
+    implementation("io.ktor:ktor-server-cors")
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("io.ktor:ktor-server-sessions-jvm")
@@ -34,6 +35,7 @@ dependencies {
     implementation("io.ktor:ktor-serialization-jackson")
     implementation("org.ktorm:ktorm-jackson:4.0.0")
     implementation("org.postgresql:postgresql:42.7.3")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("org.mindrot:jbcrypt:0.4")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-config-yaml:2.3.11")

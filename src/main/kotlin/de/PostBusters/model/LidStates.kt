@@ -4,7 +4,9 @@ import org.ktorm.database.Database
 import org.ktorm.entity.Entity
 import org.ktorm.entity.sequenceOf
 import org.ktorm.schema.Table
-import org.ktorm.schema.*
+import org.ktorm.schema.boolean
+import org.ktorm.schema.datetime
+import org.ktorm.schema.int
 import java.time.LocalDateTime
 
 object LidStates : Table<LidState>("t_lid_states") {
@@ -15,6 +17,7 @@ object LidStates : Table<LidState>("t_lid_states") {
 }
 
 interface LidState : Entity<LidState> {
+    companion object : Entity.Factory<LidState>()
     val id : Int
     var postboxId : Int
     var timestamp : LocalDateTime
