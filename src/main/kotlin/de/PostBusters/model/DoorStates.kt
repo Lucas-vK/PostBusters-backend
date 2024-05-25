@@ -15,6 +15,7 @@ object DoorStates : Table<DoorState>("t_door_states") {
 }
 
 interface DoorState : Entity<DoorState> {
+    companion object : Entity.Factory<WeightSensorState>()
     val id : Int
     var postboxId : Int
     var timestamp : LocalDateTime

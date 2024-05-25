@@ -59,15 +59,17 @@ fun Application.configureRouting() {
             }
         }
 
-        post("/put/{type}/{userId}") {
+
+        post("/put/{type}/{userName}") {
             val db = Db.connect()
-            val user = Integer.parseInt(call.parameters["userId"])
+            val user = call.parameters["userName"]
+            val loggedInUser = db.users.single { it.login eq user!! }
             when (call.parameters["type"]?.toLowerCasePreservingASCIIRules()) {
                 "postboxes" -> {
                     val newPb = call.receive<PostBox>()
                     db.postBoxes.add(newPb)
                     db.usersPostboxes.add(UserPostbox {
-                        userId = user
+                        userId = loggedInUser.id!!
                         postboxId = newPb.id!!
                     })
                     call.respond(newPb)}

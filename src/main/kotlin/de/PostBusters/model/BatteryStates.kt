@@ -15,6 +15,7 @@ object BatteryStates : Table<BatteryState>("t_battery_states") {
 }
 
 interface BatteryState : Entity<BatteryState> {
+    companion object : Entity.Factory<WeightSensorState>()
     val id: Int
     var postboxId: Int
     var timestamp: LocalDateTime

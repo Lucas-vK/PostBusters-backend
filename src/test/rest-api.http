@@ -4,8 +4,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "login": "test3",
-  "password": "test"
+  "login": "test34et5",
+  "password": "NewAndTotallyUniquePassword"
 }
 
 ### create new user
@@ -92,8 +92,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "username": "user4",
-  "newLogin": "user666"
+  "username": "mashina.katherina@gmail.com",
+  "newLogin": "test"
 }
 
 ### change password
@@ -102,6 +102,6 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "username": "test",
+  "username": "test34et5",
   "newPassword": "NewAndTotallyUniquePassword"
 }

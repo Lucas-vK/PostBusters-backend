@@ -12,6 +12,7 @@ import de.PostBusters.model.doorStates
 import de.PostBusters.model.batteryStates
 import de.PostBusters.model.weightSensorStates
 import org.ktorm.entity.add
+import java.time.LocalDateTime
 
 fun Route.sensorRouting() {
 
@@ -37,23 +38,16 @@ fun Route.sensorRouting() {
         }
     }
 
-    route("/update-batteryState") {
-        // add a battery-state for the specified box
-        post() {
-            val newBatteryState = call.receive<BatteryState>()
-            val db = Db.connect()
-            db.batteryStates.add(newBatteryState)
-            call.respond(HttpStatusCode.OK)
-            return@post
-        }
-    }
-
     route("/update-weightState") {
         // add a weight-state for the specified box
         post() {
-            val newWeightState = call.receive<WeightSensorState>()
+            val newWeightState = call.receiveText()
             val db = Db.connect()
-            db.weightSensorStates.add(newWeightState)
+            db.weightSensorStates.add(WeightSensorState {
+                weight = newWeightState.toBigDecimal()
+                timestamp = LocalDateTime.now()
+
+            })
             call.respond(HttpStatusCode.OK)
             return@post
         }

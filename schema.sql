@@ -35,7 +35,8 @@ create table t_door_states
         constraint fk_postbox_id_postbox
             references t_postboxes (id),
     timestamp  timestamp                  not null,
-    is_open    BOOLEAN default false not null
+    is_open    BOOLEAN default false not null,
+    mac    TEXT not null
 );
 
 create table t_lid_states
@@ -45,7 +46,8 @@ create table t_lid_states
         constraint fk_postbox_id_postbox
             references t_postboxes (id),
     timestamp  timestamp                  not null,
-    is_open    BOOLEAN default false not null
+    is_open    BOOLEAN default false not null,
+        mac    TEXT not null
 );
 
 create table t_battery_states
@@ -55,7 +57,8 @@ create table t_battery_states
         constraint fk_postbox_id_postbox
             references t_postboxes (id),
     timestamp  timestamp                  not null,
-    charge    int not null
+    charge    int not null,
+        mac    TEXT not null
 );
 
 create table t_weight_sensor_state
@@ -65,5 +68,6 @@ create table t_weight_sensor_state
         constraint fk_postbox_id_postbox
             references t_postboxes (id),
     timestamp  timestamp                  not null,
-    weight    NUMERIC not null
+    weight    NUMERIC not null,
+    mac    TEXT not null
 );
