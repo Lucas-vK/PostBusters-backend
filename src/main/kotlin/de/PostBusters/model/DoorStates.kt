@@ -1,6 +1,5 @@
 package de.PostBusters.model
 
-import de.PostBusters.model.BatteryStates.bindTo
 import org.ktorm.database.Database
 import org.ktorm.entity.Entity
 import org.ktorm.entity.sequenceOf

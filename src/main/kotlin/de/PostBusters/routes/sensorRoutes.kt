@@ -11,43 +11,9 @@ import de.PostBusters.model.lidStates
 import de.PostBusters.model.doorStates
 import de.PostBusters.model.batteryStates
 import de.PostBusters.model.weightSensorStates
-import org.ktorm.dsl.*
 import org.ktorm.entity.add
 
 fun Route.sensorRouting() {
-    route("/sensor") {
-
-        // get all lid entries of the specified box
-        get("{box_id?}") {
-            //authenticate("auth-session")
-            val boxId = call.parameters["box_id"] ?: return@get call.respondText(
-                "Missing box-id",
-                status = HttpStatusCode.BadRequest
-            )
-
-            val db = Db.connect()
-            val lidc = db.from(LidStates).select().where { LidStates.id eq boxId.toInt() }
-            //val lidchanges = db.lidState.find { it.postboxId eq boxId.toInt() }
-
-
-            call.respond(lidc)
-            //val customer =
-            //    customerStorage.find { it.id == id } ?: return@get call.respondText(
-            //        "No customer with id $id",
-            //        status = HttpStatusCode.NotFound
-            //)
-            //call.respond(customer)
-        }
-
-
-        //get{
-        //    if (customerStorage.isNotEmpty()) {
-        //        call.respond(customerStorage)
-        //    } else {
-        //        call.respondText("No customers found", status = HttpStatusCode.OK)
-        //    }
-        //}
-    }
 
     route("/update-lidState") {
         // add a lid-state for the specified box
