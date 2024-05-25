@@ -15,7 +15,7 @@ import org.mindrot.jbcrypt.BCrypt
 import java.time.LocalDateTime
 
 fun Application.configureRouting() {
-    data class CustomLogin(val username: String)
+    data class CustomLogin(val username: String, val newLogin: String?, val newPassword: String?)
     routing {
         post("/{type}") {
             val login = call.receive<CustomLogin>()
@@ -43,6 +43,7 @@ fun Application.configureRouting() {
                 else -> call.respond(HttpStatusCode.BadRequest)
             }
         }
+
         post("/{type}/{postBoxId}") {
             val db = Db.connect()
             when (call.parameters["type"]?.toLowerCasePreservingASCIIRules()) {
@@ -57,6 +58,7 @@ fun Application.configureRouting() {
                 }
             }
         }
+
         post("/put/{type}/{userId}") {
             val db = Db.connect()
             val user = Integer.parseInt(call.parameters["userId"])
@@ -77,6 +79,7 @@ fun Application.configureRouting() {
                 else -> call.respond(HttpStatusCode.BadRequest)
             }
         }
+
         post("create-user") {
             val newUser = call.receive<User>()
             val db = Db.connect()
@@ -91,6 +94,32 @@ fun Application.configureRouting() {
             call.respond(HttpStatusCode.Conflict)
             return@post
         }
+
+        post("/change-login") {
+            val login = call.receive<CustomLogin>()
+            val db = Db.connect()
+            val currentUser = db.users.single { it.login eq login.username }
+            val existingUser = db.users.singleOrNull { user -> user.login eq login.newLogin!! }
+            if (existingUser != null) {
+                call.respond(HttpStatusCode.BadRequest)
+                return@post
+            }
+            currentUser.login = login.newLogin!!
+            currentUser.flushChanges()
+            call.respond(HttpStatusCode.OK)
+            return@post
+        }
+
+        post("/change-password") {
+            val login = call.receive<CustomLogin>()
+            val db = Db.connect()
+            val currentUser = db.users.single { it.login eq login.username }
+            currentUser.password = BCrypt.hashpw(login.newPassword!!, BCrypt.gensalt())
+            currentUser.flushChanges()
+            call.respond(HttpStatusCode.OK)
+            return@post
+        }
+
         sensorRouting()
     }
 }

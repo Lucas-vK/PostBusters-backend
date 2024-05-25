@@ -85,3 +85,23 @@ Content-Type: application/json
   "timestamp": [2024,5,25,2,7,52,942372300],
   "weight": 10.32
 }
+
+### change login
+POST http://localhost:8080/change-login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "user4",
+  "newLogin": "user666"
+}
+
+### change password
+POST http://localhost:8080/change-password
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "test",
+  "newPassword": "NewAndTotallyUniquePassword"
+}
