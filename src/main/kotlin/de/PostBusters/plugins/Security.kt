@@ -47,6 +47,21 @@ fun Application.configureSecurity() {
             }
         }
     }
+    install(Authentication) {
+        session<UserSession>("auth-session") {
+            validate { session ->
+                if(session.userId != null) {
+                    session
+                } else {
+                    null
+                }
+            }
+            challenge {
+                call.response.status(HttpStatusCode.Unauthorized)
+                call.respond(HttpStatusCode.Unauthorized)
+            }
+        }
+    }
     routing {
         post("/login") {
             val login = call.receive<CustomLogin>()

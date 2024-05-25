@@ -60,6 +60,20 @@ fun Application.configureRouting() {
             call.respond(HttpStatusCode.Conflict)
             return@post
         }
+        post("create-user") {
+            val newUser = call.receive<User>()
+            val db = Db.connect()
+            val user = db.users.singleOrNull { user -> user.login eq newUser.login }
+            if (user == null) {
+                newUser.password = BCrypt.hashpw(newUser.password, BCrypt.gensalt())
+                db.users.add(newUser)
+                call.respond(newUser)
+                return@post
+            }
+            call.response.status(HttpStatusCode.Conflict)
+            call.respond(HttpStatusCode.Conflict)
+            return@post
+        }
         sensorRouting()
     }
 }

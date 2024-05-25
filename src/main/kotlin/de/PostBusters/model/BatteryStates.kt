@@ -1,12 +1,10 @@
 package de.PostBusters.model
 
-import de.PostBusters.model.LidStates.bindTo
 import org.ktorm.database.Database
 import org.ktorm.entity.Entity
 import org.ktorm.entity.sequenceOf
 import org.ktorm.schema.Table
 import org.ktorm.schema.*
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 object BatteryStates : Table<BatteryState>("t_battery_states") {
