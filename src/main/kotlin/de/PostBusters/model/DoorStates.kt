@@ -9,14 +9,14 @@ import java.time.LocalDateTime
 
 object DoorStates : Table<DoorState>("t_door_states") {
     val id = int("id").primaryKey().bindTo { it.id }
-    val postboxId = int("postbox_id").bindTo { it.postbox }
+    val postboxId = int("postbox_id").bindTo { it.postboxId }
     val timestamp = datetime("timestamp").bindTo { it.timestamp }
     val isOpen = boolean("is_open").bindTo { it.isOpen }
 }
 
 interface DoorState : Entity<DoorState> {
     val id : Int
-    var postbox : Int
+    var postboxId: Int
     var timestamp : LocalDateTime
     var isOpen : Boolean
 }

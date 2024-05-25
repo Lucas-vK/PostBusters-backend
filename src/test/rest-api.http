@@ -36,33 +36,6 @@ Content-Type: application/json
   "address":  "test",
   "notes": "test"
 }
-<> 2024-05-24T225553.200.json
-<> 2024-05-24T225234.200.json
-<> 2024-05-24T224346.200.json
-<> 2024-05-24T220921.200.json
-<> 2024-05-24T214822.200.json
-<> 2024-05-24T213145.200.json
-<> 2024-05-24T205408.200.json
-<> 2024-05-24T205140.200.json
-<> 2024-05-24T204844.200.json
-<> 2024-05-24T204338.200.txt
-<> 2024-05-24T204122.200.txt
-<> 2024-05-24T203902.200.txt
-<> 2024-05-24T203722.200.json
-<> 2024-05-24T203620.200.json
-<> 2024-05-24T203532.200.json
-<> 2024-05-24T203511.200.json
-<> 2024-05-24T203013.200.json
-<> 2024-05-24T203004.200.json
-<> 2024-05-24T202951.200.json
-<> 2024-05-24T202943.200.json
-<> 2024-05-24T202839.200.json
-<> 2024-05-24T202820.200.json
-<> 2024-05-24T202039.200.json
-<> 2024-05-24T202034.200.json
-<> 2024-05-24T202020.200.json
-<> 2024-05-24T193522.200.json
-<> 2024-05-24T193505.200.json
 
 ### new lid-state
 POST http://localhost:8080/update-lidState
@@ -70,7 +43,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "postbox": 1,
+  "postboxId": 1,
   "timestamp": [2024,5,25,2,7,52,942372300],
   "isOpen": true
 }
@@ -81,7 +54,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "postbox": 1,
+  "postboxId": 1,
   "timestamp": [2024,5,25,2,7,52,942372300],
   "isOpen": true
 }
@@ -92,7 +65,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "postbox": 1,
+  "postboxId": 1,
   "timestamp": [2024,5,25,2,7,52,942372300],
   "charge": 50
 }
@@ -103,7 +76,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "postbox": 1,
+  "postboxId": 1,
   "timestamp": [2024,5,25,2,7,52,942372300],
   "weight": 10.32
 }
